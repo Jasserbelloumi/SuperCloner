@@ -1,6 +1,10 @@
+// المجلد الرئيسي يبقى نظيفاً في الهياكل الحديثة
 buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.0'
     }
 }
-// تم نقل المستودعات إلى settings.gradle بنجاح
