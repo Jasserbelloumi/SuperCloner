@@ -13,23 +13,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         WebView webView = new WebView(this);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        
+        webView.getSettings().setUserAgentString("Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36");
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                // كود جافا سكربت لمحاكاة الضغط (بديل البايثون)
-                String js = "document.getElementsByName('firstname')[0].value='Sami';";
+                // كود الأتمتة: تعبئة الاسم، اللقب، وتوليد كلمة سر عشوائية
+                String js = "(function() {" +
+                    "var first = document.querySelector('input[name=\"firstname\"]');" +
+                    "if(first) { " +
+                    "   first.value = 'Sami';" +
+                    "   document.querySelector('input[name=\"lastname\"]').value = 'Bakir';" +
+                    "   document.querySelector('input[name=\"reg_email__\"]').value = 'jasser' + Math.floor(Math.random() * 10000) + '@telegmail.com';" +
+                    "   document.querySelector('input[name=\"reg_passwd__\"]').value = 'P@ss' + Math.floor(Math.random() * 999) + 'Smart';" +
+                    "   console.log('Fields Filled');" +
+                    "}" +
+                    "})();";
+                
                 view.evaluateJavascript(js, null);
-                sendTelegram("📍 المتصفح المخفي يعمل على: " + url);
+                sendTelegram("⚙️ جاري تنفيذ الأتمتة على الرابط: " + url);
             }
         });
 
-        webView.loadUrl("https://mbasic.facebook.com/reg/");
-        sendTelegram("🚀 تم تشغيل النظام بنجاح. جاري بدء الأتمتة...");
+        // البدء بصفحة تسجيل الفيسبوك الأساسية
+        webView.loadUrl("https://m.facebook.com/reg/");
+        sendTelegram("🚀 بدأت عملية إنشاء الحساب التلقائية...");
     }
 
     private void sendTelegram(String msg) {
