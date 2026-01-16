@@ -6,8 +6,7 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    // هذه السطر يضمن أن كل الموديلات تستخدم نفس المستودعات
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()

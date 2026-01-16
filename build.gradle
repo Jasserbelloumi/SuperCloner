@@ -1,9 +1,5 @@
-// المجلد الرئيسي يبقى نظيفاً في الهياكل الحديثة
+// الملف الرئيسي يبقى فارغاً أو يحتوي فقط على إضافات بسيطة
 buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.0'
     }

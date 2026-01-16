@@ -5,6 +5,7 @@ plugins {
 android {
     namespace 'com.example.cloner'
     compileSdk 34
+    
     defaultConfig {
         applicationId "com.example.cloner"
         minSdk 21
